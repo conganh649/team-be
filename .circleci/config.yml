@@ -44,13 +44,13 @@ jobs:
 
 workflows:
   heroku_deploy:
+    filters:
+      branches:
+        only:
+          - dev
     jobs:
       - run_tests
 
       - deploy:
           requires:
             - run_tests
-          filters:
-            branches:
-              only:
-                - dev
