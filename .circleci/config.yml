@@ -46,11 +46,11 @@ workflows:
   heroku_deploy:
     jobs:
       - run_tests
-       filters:
-            branches:
-              only:
-                - dev
 
       - deploy:
           requires:
             - run_tests
+          filters:
+            branches:
+              only:
+                - dev
