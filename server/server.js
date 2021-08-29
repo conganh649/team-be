@@ -23,7 +23,7 @@ app.post("/api/users/register", async (req, res) => {
   user.lastname = lastname;
   let userModel = new User(user);
   await userModel.save((err, doc) => {
-    if (err) return res.json({ success: "Sai kia alo", err });
+    if (err) return res.json({ success: "Sai roi kia alo", err });
     res.status(200).json({
       success: true,
       userdata: doc,
