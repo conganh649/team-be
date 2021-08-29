@@ -34,10 +34,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
   deploy:
-    filters:
-      branches:
-        only:
-          - dev
     executor: heroku/default
 
     steps:
@@ -54,3 +50,7 @@ workflows:
       - deploy:
           requires:
             - run_tests
+          filters:
+            branches:
+              only:
+                - dev
