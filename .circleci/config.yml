@@ -38,8 +38,6 @@ jobs:
 
     steps:
       - checkout
-      - git pull origin dev
-      - git pull origin master
       - heroku/install
       - heroku/deploy-via-git:
           branch: dev
@@ -48,6 +46,10 @@ workflows:
   heroku_deploy:
     jobs:
       - run_tests
+       filters:
+            branches:
+              only:
+                - dev
 
       - deploy:
           requires:
