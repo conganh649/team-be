@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 var app = express();
+app.use(express.json());
 app.use(
   cors({
     origin: "*",
