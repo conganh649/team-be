@@ -1,13 +1,17 @@
-const express = require("express");
+var express = require("express");
 const connectDB = require("./connection/connection");
-const cors = require("cors");
+var cors = require("cors");
 // const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const app = express();
-app.use(cors());
-
+var app = express();
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+console.log("Enable CORS");
 //Models
 const { User } = require("./models/user");
 
