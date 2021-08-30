@@ -6,14 +6,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-app.use(express.json());
 app.use(cors());
 
-app.enableCors({
-  origin: "https://planedy.netlify.app",
-});
-
-console.log(process.env.DB_URL);
 //Models
 const { User } = require("./models/user");
 
