@@ -1,19 +1,16 @@
 const express = require("express");
 const connectDB = require("./connection/connection");
+const cors = require("cors");
 // const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+app.enableCors({
+  origin: "https://planedy.netlify.app",
 });
 
 console.log(process.env.DB_URL);
