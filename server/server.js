@@ -9,7 +9,7 @@ app.use(express.json());
 
 console.log(process.env.DB_URL);
 //Models
-const { User } = require("./models/user");
+const { User } = require("./models/userModel");
 
 //===============================
 //          USERS
