@@ -1,13 +1,18 @@
-const express = require("express");
+var express = require("express");
 const connectDB = require("./connection/connection");
+var cors = require("cors");
 // const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const app = express();
+var app = express();
 app.use(express.json());
-
-console.log(process.env.DB_URL);
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+console.log("Enable CORS");
 //Models
 const { User } = require("./models/userModel");
 
@@ -23,7 +28,7 @@ app.post("/api/users/register", async (req, res) => {
   user.lastname = lastname;
   let userModel = new User(user);
   await userModel.save((err, doc) => {
-    if (err) return res.json({ success: "Sai kia alo", err });
+    if (err) return res.json({ success: "Wrong post", err });
     res.status(200).json({
       success: true,
       userdata: doc,
