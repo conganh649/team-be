@@ -9,7 +9,11 @@ app.use(express.json());
 
 console.log(process.env.DB_URL);
 //Models
-const { User } = require("./models/user");
+const { User } = require("./models/userModel");
+const { Product } = require("./models/productModel");
+const { Category } = require("./models/categoryModel");
+const { Cart } = require("./models/cartModel");
+const { Label } = require("./models/labelModel");
 
 //===============================
 //          USERS
