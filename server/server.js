@@ -14,7 +14,7 @@ app.use(
 );
 console.log("Enable CORS");
 //Models
-const { User } = require("./models/user");
+const { User } = require("./models/userModel");
 
 //===============================
 //          USERS
