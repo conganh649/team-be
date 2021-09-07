@@ -51,6 +51,7 @@ exports.find = async (req, res) => {
         }
       })
       .catch((err) => {
+        console.log(err);
         res.status(500).send({ message: "Error finding user with id " + id });
       });
   } else {
@@ -84,6 +85,7 @@ exports.update = (req, res) => {
       }
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).send({ message: "Error update user information" });
     });
 };
@@ -104,6 +106,7 @@ exports.delete = (req, res) => {
       }
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).send({
         message: "Could not delete user with id =" + id,
       });
