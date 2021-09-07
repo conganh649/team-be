@@ -34,10 +34,10 @@ exports.create = (req, res) => {
 };
 
 // READ ALL USERS / READ USER BY ID
-exports.find = (req, res) => {};
+// exports.find = (req, res) => {};
 
-// UPDATE USER BY ID
-exports.update = (req, res) => {};
+// // UPDATE USER BY ID
+// exports.update = (req, res) => {};
 
-// DELETE USER BY ID
-exports.delete = (req, res) => {};
+// // DELETE USER BY ID
+// exports.delete = (req, res) => {};
