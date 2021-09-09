@@ -5,12 +5,12 @@ const SALT_I = 10;
 const userSchema = new mongoose.Schema(
   {
     userName: { type: String, required: true, trim: true },
-    fullName: { type: String, required: true },
+    fullName: { type: String },
     phoneNumber: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     address: { type: String },
-    dateofbirth: { type: Date, required: true, default: Date.now },
+    dateofbirth: { type: Date, default: Date.now },
     role: {
       type: String,
       enum: ["admin", "customer"],
