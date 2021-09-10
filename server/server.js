@@ -1,41 +1,23 @@
 var express = require("express");
 const connectDB = require("./connection/connection");
+const bodyParser = require("body-parser");
 var cors = require("cors");
-// const mongoose = require("mongoose");
+var users = require("./routes/router");
 const dotenv = require("dotenv");
 dotenv.config();
 
 var app = express();
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "*",
   })
 );
 console.log("Enable CORS");
-//Models
-const { User } = require("./models/userModel");
 
-//===============================
-//          USERS
-//===============================
-app.post("/api/users/register", async (req, res) => {
-  const { email, password, name, lastname } = req.body;
-  let user = {};
-  user.email = email;
-  user.password = password;
-  user.name = name;
-  user.lastname = lastname;
-  let userModel = new User(user);
-  await userModel.save((err, doc) => {
-    if (err) return res.json({ success: "Wrong post", err });
-    res.status(200).json({
-      success: true,
-      userdata: doc,
-    });
-  });
-});
-
+app.use("/", users);
 connectDB();
 
 const port = process.env.PORT || 3002;
@@ -43,3 +25,5 @@ const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server Running at ${port}`);
 });
+
+module.exports = app;
