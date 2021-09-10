@@ -1,9 +1,11 @@
 var express = require("express");
 const connectDB = require("./connection/connection");
 var cors = require("cors");
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
+//routes
+const cartRoutes = require("./routes/api/cart");
 
 var app = express();
 app.use(express.json());
@@ -28,7 +30,7 @@ app.post("/api/users/register", async (req, res) => {
   user.lastname = lastname;
   let userModel = new User(user);
   await userModel.save((err, doc) => {
-    if (err) return res.json({ success: "Wrong post", err });
+    if (err) return res.json({ success: "Wsrong post", err });
     res.status(200).json({
       success: true,
       userdata: doc,
@@ -43,3 +45,6 @@ const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server Running at ${port}`);
 });
+
+// cart route
+app.use("/api", cartRoutes);
