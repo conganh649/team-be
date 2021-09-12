@@ -26,9 +26,6 @@ const updateCartItem = (req, res) => {
     { new: true },
     function (err, doc) {
       if (err) return res.status(500).send(err);
-      const response = {
-        message: "CartItem successfully updated",
-      };
       return res.json(doc);
     }
   );
