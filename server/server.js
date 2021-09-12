@@ -2,9 +2,13 @@ var express = require("express");
 const connectDB = require("./connection/connection");
 const bodyParser = require("body-parser");
 var cors = require("cors");
+
 var users = require("./routes/router");
+
 const dotenv = require("dotenv");
 dotenv.config();
+//routes
+const cartRoutes = require("./routes/api/cart");
 
 var app = express();
 app.use(express.json());
@@ -25,5 +29,7 @@ const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server Running at ${port}`);
 });
+// cart route
+app.use("/api", cartRoutes);
 
 module.exports = app;
