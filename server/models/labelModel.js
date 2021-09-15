@@ -15,5 +15,3 @@ const labelSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Label", labelSchema);
-
-

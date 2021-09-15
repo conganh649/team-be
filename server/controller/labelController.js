@@ -22,13 +22,13 @@ const getLabelById = (req, res) => {
 const updateLabel = (req, res) => {
   return labelService.updateLabel(req, res);
 };
-const deleteLabel = (req,res) => {
-    return labelService.deleteLabel(req, res);
-}
+const deleteLabel = (req, res) => {
+  return labelService.deleteLabel(req, res);
+};
 module.exports = {
   createLabel,
   getLabel,
   getLabelById,
   updateLabel,
-  deleteLabel
+  deleteLabel,
 };
