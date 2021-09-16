@@ -11,13 +11,6 @@ route.get("/api/users", userController.find);
 route.put("/api/users/:id", userController.update);
 route.delete("/api/users/:id", userController.delete);
 
-// PRODUCTS
-route.get("/api/products", productController.getAll);
-route.post("/api/product", productController.create);
-route.get("/api/product/:id", productController.getOne);
-route.put("/api/product/:id", productController.update);
-route.delete("/api/products/:id", productController.delete);
-
 //AUTH
 route.post("/api/signup", authController.signup);
 route.get("/api/activation/:token", authController.activateAccount);
