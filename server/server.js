@@ -10,6 +10,7 @@ dotenv.config();
 //routes
 const cartRoutes = require("./routes/api/cart");
 
+const labelRoutes = require("./routes/api/label");
 var app = express();
 app.use(express.json());
 app.use(bodyParser.json());
@@ -32,4 +33,5 @@ app.listen(port, () => {
 // cart route
 app.use("/api", cartRoutes);
 
+app.use("/api", labelRoutes);
 module.exports = app;
