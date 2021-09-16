@@ -6,7 +6,7 @@ const createCart = async (cart) => {
 const getCartItem = (query, res) => {
   Cart.find(query, (err, data) => {
     if (err) return res.status(500).send(err);
-    res.json({ data: data });
+    res.json(data);
   });
 };
 const deleteCartItem = (req, res) => {
@@ -30,9 +30,13 @@ const updateCartItem = (req, res) => {
     }
   );
 };
+const getCartItemById = (query) => {
+  return Cart.find(query);
+};
 module.exports = {
   createCart,
   getCartItem,
   deleteCartItem,
   updateCartItem,
+  getCartItemById,
 };
