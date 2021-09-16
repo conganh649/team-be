@@ -15,4 +15,5 @@ router.delete("/carts/:id", (req, res) => {
 router.put("/carts/:id", (req, res) => {
   return cartController.updateCartItem(req, res);
 });
+router.get("/carts/:id", (req, res) => {cartController.getCartItemById(req,res)})
 module.exports = router;
