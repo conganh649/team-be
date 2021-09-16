@@ -22,7 +22,7 @@ exports.signup = async (req, res) => {
       process.env.JWT_ACC_ACTIVATE,
       { expiresIn: "1d" }
     );
-    const url = `${process.env.CLIENT_URL}api/activation/${token}`;
+    const url = `${process.env.CLIENT_URL}/api/activation/${token}`;
     const data = {
       from: "app@test.com",
       to: req.body.email,
