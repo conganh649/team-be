@@ -31,12 +31,12 @@ const updateCartItem = (req, res) => {
   );
 };
 const getCartItemById = (query) => {
-  return Cart.find(query)
-}
+  return Cart.find(query);
+};
 module.exports = {
   createCart,
   getCartItem,
   deleteCartItem,
   updateCartItem,
-  getCartItemById
+  getCartItemById,
 };

@@ -29,5 +29,5 @@ module.exports = {
   getCartItem,
   deleteCartItem,
   updateCartItem,
-  getCartItemById
+  getCartItemById,
 };
