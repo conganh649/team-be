@@ -11,26 +11,25 @@ const cartSchema = new mongoose.Schema(
         product: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Product",
-          required: true,
+          required: true
         },
       },
     ],
     shippingAddress: {
-      fullName: { type: String, required: true },
-      phoneNumber: { type: String, required: true },
-      address: { type: String, required: true },
+      fullName: { type: String },
+      phoneNumber: { type: String },
+      address: { type: String },
     },
     state: ["cart", "order"],
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     status: {
       type: String,
       enum: ["pending", "completed", "cancelled"],
-      required: true,
     },
   },
   { timestamps: true }
 );
 
-const Cart = mongoose.model("Cart", cartSchema);
+module.exports = mongoose.model("Cart", cartSchema);
 
-module.exports = { Cart };
+
