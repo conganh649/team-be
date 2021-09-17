@@ -16,9 +16,9 @@ route.delete("/api/users/:id", userController.delete);
 
 // PRODUCTS
 route.get("/api/products", productController.getAll);
-route.post("/api/product", productController.create);
-route.get("/api/product/:id", productController.getOne);
-route.put("/api/product/:id", productController.update);
+route.post("/api/products", productController.create);
+route.get("/api/products/:id", productController.getOne);
+route.put("/api/products/:id", productController.update);
 route.delete("/api/products/:id", productController.delete);
 
 //AUTH
@@ -26,11 +26,11 @@ route.post("/api/signup", authController.signup);
 route.get("/api/activation/:token", authController.activateAccount);
 
 // CARTS
-route.post("/api/carts",cartController.createCart);
+route.post("/api/carts", cartController.createCart);
 route.get("/api/carts", cartController.getCartItem);
-route.delete("/api/carts/:id",cartController.deleteCartItem);
+route.delete("/api/carts/:id", cartController.deleteCartItem);
 route.put("/api/carts/:id", cartController.updateCartItem);
-route.get("/api/carts/:id",  cartController.getCartItemById);
+route.get("/api/carts/:id", cartController.getCartItemById);
 
 //LABELS
 route.post("/api/labels", labelController.createLabel);
