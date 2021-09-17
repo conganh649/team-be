@@ -10,16 +10,9 @@ route.put("/api/users/:id", userController.update);
 route.delete("/api/users/:id", userController.delete);
 
 // LABELS
-route.post("/labels", async (req, res) => {
-  if (Array.isArray(req.body)) {
-    return labelController.createLabel(req, res);
-  }
-  return await labelController.createLabel(req, res);
-});
-route.get("/labels", (req, res) => labelController.getLabel(req, res));
-route.get("/labels/:id", (req, res) => labelController.getLabelById(req, res));
-route.put("/labels/:id", (req, res) => labelController.updateLabel(req, res));
-route.delete("/labels/:id", (req, res) =>
-  labelController.deleteLabel(req, res)
-);
+route.post("/api/labels", labelController.createLabel);
+route.get("/api/labels", labelController.getLabel);
+route.get("/api/labels/:id",labelController.getLabelById);
+route.put("/api/labels/:id", labelController.updateLabel);
+route.delete("/api/labels/:id", labelController.deleteLabel);
 module.exports = route;
