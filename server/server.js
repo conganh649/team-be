@@ -4,8 +4,6 @@ const bodyParser = require("body-parser");
 var cors = require("cors");
 
 var users = require("./routes/router");
-const cartRoutes = require("./routes/router");
-const labelRoutes = require("./routes/router");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -29,8 +27,5 @@ const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server Running at ${port}`);
 });
-
-app.use("/api", cartRoutes);
-app.use("/api", labelRoutes);
 
 module.exports = app;
