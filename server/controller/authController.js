@@ -24,7 +24,7 @@ exports.signup = async (req, res) => {
     );
     const url = `${process.env.CLIENT_URL}/api/activation/${token}`;
     const data = {
-      from: "app@test.com",
+      from: "no-reply@sandbox068b1b4ddef449cd8d81a4dd15ca0d42.mailgun.org",
       to: req.body.email,
       subject: "Email Activation",
       text: `Please click this link to confirm your email: "${url}"`,
