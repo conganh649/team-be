@@ -21,6 +21,5 @@ route.delete("/api/products/:id", productController.delete);
 
 //AUTH
 route.post("/api/signup", authController.signup);
-route.get("/api/activation/:token", authController.activateAccount);
 
 module.exports = route;
