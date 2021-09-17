@@ -23,7 +23,6 @@ route.delete("/api/products/:id", productController.delete);
 
 //AUTH
 route.post("/api/signup", authController.signup);
-route.get("/api/activation/:token", authController.activateAccount);
 
 // CARTS
 route.post("/api/carts", cartController.createCart);
