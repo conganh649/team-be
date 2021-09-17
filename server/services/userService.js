@@ -114,3 +114,36 @@ exports.deleteById = async function (req) {
     });
   return success;
 };
+
+//AUTH
+exports.activateByEmail = async function (req) {
+  let success = false;
+
+  const id = req.id;
+  await User.findByIdAndUpdate(
+    id,
+    { activated: req.activated },
+    {
+      useFindAndModify: false,
+    }
+  )
+    .then((data) => {
+      if (!data) {
+        throw {
+          status: 404,
+          success: false,
+          message: "User not found",
+        };
+      } else {
+        success = true;
+      }
+    })
+    .catch((err) => {
+      throw {
+        status: err.status || 500,
+        success: false,
+        message: err.message,
+      };
+    });
+  return success;
+};
