@@ -6,7 +6,7 @@ var users = require("./routes/router");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const labelRoutes = require("./routes/api/label");
+const labelRoutes = require("./routes/router");
 var app = express();
 app.use(express.json());
 app.use(bodyParser.json());
