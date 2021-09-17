@@ -7,7 +7,6 @@ exports.signup = async (req, res) => {
       res.status(400).send({ message: "Content can not be empty" });
       return;
     }
-    let emailVerification = "";
     const user = await userService.createOne(req);
     res.status(200).json({
       success: true,
