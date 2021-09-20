@@ -28,7 +28,7 @@ exports.find = async (req, res) => {
   if (req.query.id) {
     //Get one by id
     try {
-      const user = await userService.getOneById(req);
+      const user = await userService.getOneById(req.query.id);
       res.status(200).send(user);
     } catch (error) {
       if (!error.status) {
@@ -59,9 +59,12 @@ exports.update = async (req, res) => {
   }
   try {
     const result = await userService.updateById(req);
-    res
-      .status(200)
-      .json({ success: result, message: "User updated successfully" });
+    const user = await userService.getOneById(req.params.id);
+    res.status(200).json({
+      success: result,
+      message: "User updated successfully",
+      data: user,
+    });
   } catch (error) {
     if (!error.status) {
       res.status(500).json({ success: false, message: error.message });
