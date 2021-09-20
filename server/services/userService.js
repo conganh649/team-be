@@ -39,8 +39,7 @@ exports.getAll = async function () {
   return users;
 };
 
-exports.getOneById = async function (req) {
-  const id = req.query.id;
+exports.getOneById = async function (id) {
   let user = null;
   await User.findById(id)
     .then((data) => {
