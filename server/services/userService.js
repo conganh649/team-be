@@ -1,4 +1,6 @@
 var User = require("../models/userModel");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 exports.createOne = async function (req) {
   const { email } = req.body;
@@ -145,4 +147,44 @@ exports.activateByEmail = async function (req) {
       };
     });
   return success;
+};
+
+const checkExist = (obj) => {
+  if (typeof obj === "undefined" || obj === null) {
+    return false;
+  }
+  return true;
+};
+
+exports.signin = async (userName, password) => {
+  const user = await User.findOne({ userName });
+  if (checkExist(user) === false) {
+    throw new Error("incorrect_username");
+  }
+  const match = await bcrypt.compare(password, user.password);
+  if (match === false) {
+    throw new Error("invalid_password");
+  }
+  const token = jwt.sign(
+    {
+      _id: user._id,
+      name: user.userName,
+      email: user.email,
+      password: password,
+      role: user.role,
+    },
+    process.env.TOKEN_SECRET,
+    { expiresIn: "24h" }
+  );
+  const info = {
+    id_user: user._id,
+    name: user.userName,
+    email: user.email,
+    role: user.role,
+  };
+  const matched = {
+    token,
+    userInfo: info,
+  };
+  return matched;
 };
