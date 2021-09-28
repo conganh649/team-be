@@ -24,6 +24,7 @@ const result = excelToJson({
 async function seedData() {
   await connect();
   await Category.remove({});
+  let i = 0;
   for (i = 0; i < args[2]; i++) {
     const newCategory = new Category({
       categoryName: result.categories[i].categoryName,

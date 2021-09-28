@@ -31,6 +31,7 @@ const result = excelToJson({
 async function seedData() {
   await connect();
   await User.remove({});
+  let i = 0;
   for (i = 0; i < args[2]; i++) {
     const newUser = new User({
       userName: result.users[i].userName,
