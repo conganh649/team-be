@@ -23,3 +23,33 @@ exports.signup = async (req, res) => {
     }
   }
 };
+
+exports.signin = async (req, res) => {
+  try {
+    const { userName, password } = req.body;
+    const result = await userService.signin(userName, password);
+    return res.status(200).json({
+      success: true,
+      message: "login successfully",
+      data: result,
+    });
+  } catch (error) {
+    if (!error.status) {
+      if (error.message === "invalid_password") {
+        return res
+          .status(400)
+          .json({ success: false, message: "Invalid password" });
+      }
+      if (error.message === "incorrect_username") {
+        return res
+          .status(400)
+          .json({ success: false, message: "Username is not found" });
+      }
+      res.status(500).json({ success: false, message: error.message });
+    } else {
+      res
+        .status(error.status)
+        .json({ success: error.success, message: error.message });
+    }
+  }
+};
