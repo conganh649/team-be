@@ -1,15 +1,9 @@
 "use-strict";
 const excelToJson = require("convert-excel-to-json");
-const connectDB = require("../connection/connection");
 var User = require("../models/userModel");
-const args = process.argv;
-async function connect() {
-  await connectDB();
-}
 
 const result = excelToJson({
-  sourceFile:
-    "D:/Working/Enclave/Technical_Training/team-project/be/server/seeders/data.xlsx",
+  sourceFile: __dirname + "/data.xlsx",
   sheets: [
     {
       name: "users",
@@ -28,11 +22,10 @@ const result = excelToJson({
   ],
 });
 
-async function seedData() {
-  await connect();
+async function seedData(number) {
   await User.remove({});
   let i = 0;
-  for (i = 0; i < args[2]; i++) {
+  for (i = 0; i < number; i++) {
     const newUser = new User({
       userName: result.users[i].userName,
       fullName: result.users[i].fullName,
@@ -48,4 +41,4 @@ async function seedData() {
   }
 }
 
-seedData();
+module.exports = seedData;

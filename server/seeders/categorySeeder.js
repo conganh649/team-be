@@ -1,11 +1,6 @@
 "use-strict";
 const excelToJson = require("convert-excel-to-json");
-const connectDB = require("../connection/connection");
 var Category = require("../models/categoryModel");
-const args = process.argv;
-async function connect() {
-  await connectDB();
-}
 
 const result = excelToJson({
   sourceFile:
@@ -22,10 +17,9 @@ const result = excelToJson({
 });
 
 async function seedData() {
-  await connect();
   await Category.remove({});
   let i = 0;
-  for (i = 0; i < args[2]; i++) {
+  for (i = 0; i < result.categories.length; i++) {
     const newCategory = new Category({
       categoryName: result.categories[i].categoryName,
     });
@@ -34,4 +28,4 @@ async function seedData() {
   }
 }
 
-seedData();
+module.exports = seedData;
