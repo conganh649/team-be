@@ -45,7 +45,7 @@ exports.signin = async (req, res) => {
           .status(400)
           .json({ success: false, message: "Username is not found" });
       }
-      // return res.status(500).json("Internal server");
+      res.status(500).json({ success: false, message: error.message });
     } else {
       res
         .status(error.status)
