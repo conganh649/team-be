@@ -1,8 +1,8 @@
-const { Product } = require("../models/productModel");
-const { Category } = require("../models/categoryModel");
+const Product = require("../models/productModel");
+const Category = require("../models/categoryModel");
 require("../models/labelModel");
 exports.getAll = async (req, res) => {
-  const productList = await await Product.find()
+  const productList = await Product.find()
     .populate("category")
     .populate("label")
     .exec();
@@ -66,7 +66,7 @@ exports.update = async (req, res) => {
       new: true,
     }
   );
-  if (!product) return res.status(500).send("The product can't by updated!");
+  if (!product) return res.status(500).send("The product can't be updated!");
   res.send(product);
 };
 
@@ -76,7 +76,7 @@ exports.delete = async (req, res) => {
       if (product) {
         return res
           .status(200)
-          .json({ success: true, message: "The product delete success!" });
+          .json({ success: true, message: "Delete product successfully!" });
       } else {
         return res
           .status(404)
