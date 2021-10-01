@@ -15,16 +15,16 @@ const productShema = new mongoose.Schema(
       ref: "Category",
       required: true,
     },
-    label: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Label",
-      required: true,
-    },
+    label: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Label",
+        required: true,
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
-
-const Product = mongoose.model("Product", productShema);
-module.exports = { Product };
+module.exports = mongoose.model("Product", productShema);

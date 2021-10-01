@@ -18,17 +18,21 @@ const deleteCartItem = (req, res) => {
     res.status(200).send(response);
   });
 };
-const updateCartItem = (req, res) => {
-  const content = req.body;
-  Cart.findOneAndUpdate(
-    req.params.id,
-    content,
-    { new: true },
-    function (err, doc) {
-      if (err) return res.status(500).send(err);
-      return res.json(doc);
-    }
-  );
+const updateCartItem = async (req, res) => {
+  await Cart.findByIdAndUpdate(req.params.id, req.body, {
+    useFindAndModify: false,
+    returnOriginal: false,
+  })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send("Cart not found");
+      } else {
+        res.status(200).json(data);
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 };
 const getCartItemById = (query) => {
   return Cart.find(query);
