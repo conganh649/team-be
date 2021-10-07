@@ -22,6 +22,7 @@ const productShema = new mongoose.Schema(
         required: true,
       },
     ],
+    numOfBuying: { type: Number, required: true, default: 0 },
   },
   {
     timestamps: true,
