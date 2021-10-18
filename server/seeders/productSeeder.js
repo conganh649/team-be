@@ -64,6 +64,7 @@ const result = excelToJson({
         F: "status",
         G: "quantity",
         H: "provider",
+        I: "numOfBuying",
       },
     },
   ],
@@ -92,6 +93,7 @@ async function seedData() {
       provider: result.productTest[i].provider,
       category: _.sample(referenceData[0])._id.toString(),
       label: labels,
+      numOfBuying: result.productTest[i].numOfBuying,
     });
     newProduct.save(newProduct);
     console.log(i + "-" + newProduct.productName + " saved");
